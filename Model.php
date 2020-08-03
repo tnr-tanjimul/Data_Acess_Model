@@ -14,10 +14,10 @@ class Model
 
 
 	/**
-    * ConnectDB function return connection if successfully connected
+    * connectDB function return connection if successfully connected
     */
 	
-	function ConnectDB()
+	function connectDB()
 	{
 		// Create connection
 		$connection = new mysqli($serverName, $userName, $password, $dbName);
