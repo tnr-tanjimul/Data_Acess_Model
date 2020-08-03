@@ -3,26 +3,24 @@
 /**
  * 
  */
-class Model
+public class Model
 {
 	private $serverName = "localhost";
-	private $userName = "username";
-	private $password = "password";
-	private $dbName = "myDB";
+	private $userName = "root";
+	private $password = "";
+	private $dbName = "mtest";
 	private $conn;
-
-
-
-
-	/**
-    * connectDB function return connection if successfully connected
-    */
 
 
     function __construct()
     {
     	$this->conn = $this->connectDB();
     }
+
+
+	/**
+    * connectDB function return connection if successfully connected
+    */
 	
 	function connectDB()
 	{
@@ -38,18 +36,33 @@ class Model
 	}
 
 	/**
+    * insertByArray is for insert Data by Association Array
+    * Return type true/false
+    */
+
+
+	function insertByArray($tableName, $data){  
+		$sql = "INSERT INTO ".$tableName." (";            
+		$sql .= implode(",", array_keys($data)) . ') VALUES (';            
+		$sql .= "'" . implode("','", array_values($data)) . "')";
+
+		return $this->executeNonQuery($sql);  
+	}
+
+
+	/**
     * executeQuery is for get Data 
     * Return type association array
     */
 
 	function executeQuery($sql)
 	{
-		$result = $this->conn->query($sql);
-		while($row=mysqli_fetch_assoc($result)){
-			$resultset[] = $row;
+		$data = $this->conn->query($sql);
+		while($row=mysqli_fetch_assoc($data)){
+			$dataSet[] = $row;
 		}		
-		if(!empty($resultset)){
-			return $resultset;
+		if(!empty($dataSet)){
+			return $dataSet;
 		}
 		else{
 			return array();
