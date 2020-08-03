@@ -39,12 +39,21 @@ class Model
 
 
 	/**
+    * countRows returns the number of rows in table 
+    */
+
+	function countRows($sql)
+	{
+		return $this->conn->query($query)->num_rows;
+	}
+
+
+	/**
     * executeNonQuery is for Update/Delete/Insert 
     * Return type true/false
     */
 
-
-	function ExecuteNonQuery($sql)
+	function executeNonQuery($sql)
 	{
 		return $this->conn->query($sql);
 	}
@@ -53,7 +62,6 @@ class Model
 	/**
     * disconnect the connection when object is clear
     */
-
 
 	function __destruct()
 	{
