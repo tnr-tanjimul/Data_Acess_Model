@@ -38,6 +38,17 @@ class Model
 	}
 
 
+	/**
+    * disconnect the connection when object is clear
+    */
+
+
+	function __destruct()
+	{
+		$this->conn->close();
+	}
+
+
 
 
 }
