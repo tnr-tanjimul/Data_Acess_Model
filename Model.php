@@ -39,6 +39,18 @@ class Model
 
 
 	/**
+    * executeNonQuery is for Update/Delete/Insert 
+    * Return type true/false
+    */
+
+
+	function ExecuteNonQuery($sql)
+	{
+		return $this->conn->query($sql);
+	}
+
+
+	/**
     * disconnect the connection when object is clear
     */
 
@@ -47,9 +59,6 @@ class Model
 	{
 		$this->conn->close();
 	}
-
-
-
 
 }
 
