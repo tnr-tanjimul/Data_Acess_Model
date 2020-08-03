@@ -37,6 +37,26 @@ class Model
 		} 
 	}
 
+	/**
+    * executeQuery is for get Data 
+    * Return type association array
+    */
+
+	function executeQuery($sql)
+	{
+		$result = $this->conn->query($sql);
+		while($row=mysqli_fetch_assoc($result)){
+			$resultset[] = $row;
+		}		
+		if(!empty($resultset)){
+			return $resultset;
+		}
+		else{
+			return array();
+		}
+	}
+
+
 
 	/**
     * countRows returns the number of rows in table 
