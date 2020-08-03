@@ -9,6 +9,7 @@ class Model
 	private $userName = "username";
 	private $password = "password";
 	private $dbName = "myDB";
+	private $conn;
 
 
 
@@ -16,6 +17,12 @@ class Model
 	/**
     * connectDB function return connection if successfully connected
     */
+
+
+    function __construct()
+    {
+    	$this->conn = $this->connectDB();
+    }
 	
 	function connectDB()
 	{
@@ -29,6 +36,10 @@ class Model
 			return $connection;
 		} 
 	}
+
+
+
+
 }
 
 ?>
