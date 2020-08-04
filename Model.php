@@ -3,7 +3,7 @@
 /**
  * 
  */
-public class Model
+class Model
 {
 	private $serverName = "localhost";
 	private $userName = "root";
@@ -25,7 +25,7 @@ public class Model
 	function connectDB()
 	{
 		// Create connection
-		$connection = new mysqli($serverName, $userName, $password, $dbName);
+		$connection = new mysqli($this->serverName, $this->userName, $this->password, $this->dbName);
 
 		// Check connection
 		if ($connection->connect_error) {
